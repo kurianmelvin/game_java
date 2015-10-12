@@ -6,38 +6,26 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-
-
 public class Game extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 1550691097823471818L;
-	
 	public static final int WIDTH = 640, HEIGHT = WIDTH / 12 * 9;
 	private Thread thread;
 	private boolean running = false;
-	
 	private Random r; //this creates random x,y 
 	private Handler handler;
 	private HUD hud;
-	
-	
 	public Game(){ 
 		handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
-		
 		new Window(WIDTH, HEIGHT, "Let's Built a Game!", this); //this is the Constructor
 		hud = new HUD();
 		r = new Random(); 
 		//for (int i = 0; i <1; i++){
-		
 		handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
 		//for (int i = 0; i < 10; i++){ // this for loop creates multiple enemies  
 		handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy ));
-		
-			
-		
 	}
-
 	public synchronized void start(){
 		thread = new Thread(this);
 		thread.start();
@@ -83,7 +71,6 @@ public class Game extends Canvas implements Runnable{
 	private void tick(){
 		handler.tick();
 		hud.tick();
-		
 	}
 	private void render(){
 		BufferStrategy bs = this.getBufferStrategy();
@@ -99,7 +86,6 @@ public class Game extends Canvas implements Runnable{
 		hud.render(g);
 		g.dispose();
 		bs.show();
-		
 	}
 	public static int clamp(int var, int min, int max){
 		if(var>= max)
@@ -108,11 +94,8 @@ public class Game extends Canvas implements Runnable{
 			return var = min;
 		else
 			return var;
-		
 	}
-	
 	public static void main(String args[]){			// the is the main METHOD 
-		new Game();									// new instance of out game class / which calls the constructor
-		
+		new Game();				// new instance of the game class / which calls the constructor
 	}
 }
