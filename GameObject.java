@@ -4,21 +4,17 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public abstract class GameObject { 	// this is going to be what we refer to as all the game objects.
-	
-	protected int x, y; // means it can only be accessed by which object inherits the 'GameObjct'
-	protected ID id; 	// this is coming form the Enum
+	protected int x, y; 		// means it can only be accessed by which object inherits the 'GameObjct'
+	protected ID id; 		// this is coming form the Enum
 	protected int velX, velY;
-	
 	public GameObject(int x, int y, ID id){
 		this.x = x;
 		this.y = y;
 		this.id = id;	
 	}
-	
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	public abstract Rectangle getBounds();
-	
 	public void setX(int x){
 		this.x = x;
 	} 
@@ -40,7 +36,6 @@ public abstract class GameObject { 	// this is going to be what we refer to as a
 	public void setVelX(int velX){
 		this.velX = velX;
 	}
-	
 	public void setVelY(int velY){
 		this.velY = velY;
 	}
@@ -50,10 +45,4 @@ public abstract class GameObject { 	// this is going to be what we refer to as a
 	public int getVelY(){
 		return velY;
 	}
-	
-	
-	
-	
-	
-	
 }
